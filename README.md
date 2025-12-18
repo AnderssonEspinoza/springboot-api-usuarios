@@ -39,16 +39,44 @@ src/main/java/com/demo/api
 CREATE DATABASE usuarios_db;
 ```
 
-### 2️⃣ Configurar `application.properties`
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/usuarios_db?useSSL=false&serverTimezone=UTC
-spring.datasource.username=TU_USUARIO
-spring.datasource.password=TU_PASSWORD
+### 2️⃣ Configurar credenciales (Variables de entorno)
 
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
+Por motivos de seguridad, las credenciales de la base de datos **no están incluidas en el repositorio**.
+
+La aplicación utiliza **variables de entorno** para configurar el acceso a MySQL.
+
+#### Variables requeridas
+```bash
+DB_USER=tu_usuario_mysql
+DB_PASSWORD=tu_password_mysql
 ```
+
+#### Ejemplo en Linux / macOS
+```bash
+export DB_USER=mi_usuario
+export DB_PASSWORD=mi_password
+```
+
+#### Ejemplo en Windows (PowerShell)
+```powershell
+setx DB_USER "mi_usuario"
+setx DB_PASSWORD "mi_password"
+```
+
+#### Configuración en IntelliJ IDEA
+
+1. Ir a **Run > Edit Configurations**
+2. Seleccionar la configuración de Spring Boot
+3. Agregar las variables de entorno:
+```
+   DB_USER=mi_usuario
+   DB_PASSWORD=mi_password
+```
+4. Guardar y ejecutar la aplicación
+
+#### Archivo de referencia
+
+El repositorio incluye el archivo `application-example.properties` como ejemplo de configuración. Este archivo no contiene credenciales reales.
 
 > Spring Boot creará automáticamente la tabla `usuarios` al iniciar la aplicación.
 
