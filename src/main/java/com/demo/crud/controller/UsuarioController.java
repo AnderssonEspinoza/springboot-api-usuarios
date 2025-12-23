@@ -3,6 +3,7 @@ package com.demo.crud.controller;
 
 import com.demo.crud.model.Usuario;
 import com.demo.crud.service.UsuarioService;
+import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public Usuario crear(@RequestBody Usuario usuario) {
+    public Usuario crear(@Valid @RequestBody Usuario usuario) {
         return usuarioService.guardar(usuario);
     }
 
@@ -35,7 +36,7 @@ public class UsuarioController {
     @PutMapping("/{id}")
     public Usuario actualizar(
             @PathVariable Long id,
-            @RequestBody Usuario usuario
+            @Valid @RequestBody Usuario usuario
     ) {
         return usuarioService.actualizar(id, usuario);
     }

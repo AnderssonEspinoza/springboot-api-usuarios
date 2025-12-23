@@ -9,13 +9,27 @@ Proyecto backend enfocado en demostrar buenas prácticas de desarrollo y conocim
 
 ## 🚀 Tecnologías utilizadas
 
-- Java 17
-- Spring Boot 3
-- Spring Web
-- Spring Data JPA
-- MySQL
-- Maven
-- Postman (para pruebas de la API)
+- **Java 17**
+- **Spring Boot 3**
+    - Spring Web
+    - Spring Data JPA
+    - Jakarta Validation
+- **Hibernate**
+- **MySQL**
+- **Maven**
+- **Swagger / OpenAPI**
+- **Postman** (pruebas de la API)
+- **Git y GitHub**
+---
+
+## 🏗 Arquitectura
+
+El proyecto sigue una arquitectura en capas, separando responsabilidades
+para facilitar el mantenimiento y la escalabilidad:
+
+- **Controller**: Maneja las peticiones HTTP y las respuestas de la API REST.
+- **Service**: Contiene la lógica de negocio y las reglas de la aplicación.
+- **Repository**: Acceso a datos utilizando Spring Data JPA.
 
 ---
 
@@ -32,6 +46,12 @@ src/main/java/com/demo/api
 
 ---
 
+## 🗄 Persistencia
+
+Se utiliza **Spring Data JPA** para abstraer el acceso a la base de datos,
+evitando el uso de SQL directo y permitiendo trabajar con entidades y repositorios
+de forma declarativa.
+---
 ## ⚙️ Configuración del proyecto
 
 ### 1️⃣ Crear la base de datos
@@ -109,7 +129,21 @@ cd springboot-api-usuarios
 
 ## 🧪 Pruebas con Postman
 
-Todos los endpoints fueron probados utilizando Postman. Se recomienda importar las peticiones y validar los distintos métodos HTTP.
+La API fue probada utilizando **Postman**.  
+El proyecto incluye una colección exportada para facilitar la ejecución de todas las peticiones sin configuración adicional.
+
+📁 **Colección Postman:**  
+`postman/postman_collection.json`
+
+### Cómo usar la colección
+
+1. Abrir Postman
+2. **Import** → **File**
+3. Seleccionar `postman/postman_collection.json`
+4. Configurar la URL base (ej: `http://localhost:8080`)
+
+### Evidencia de pruebas
+A continuación se muestran capturas de las pruebas realizadas a los endpoints principales de la API:
 
 ### Crear usuario
 ![Crear Usuario](screenshots/image-1.png)
@@ -133,6 +167,18 @@ Todos los endpoints fueron probados utilizando Postman. Se recomienda importar l
 - ✔ Conexión exitosa con MySQL
 - ✔ Persistencia con JPA
 - ✔ Arquitectura en capas
+- ✔ Variables de entorno para credenciales
+- ✔ Validaciones de datos (`@NotBlank`, `@Email`)
+- ✔ Manejo global de errores con `@ExceptionHandler`
+- ✔ Documentación de la API con Swagger / OpenAPI
+- ✔ Colección Postman para pruebas de endpoints
+---
+
+## 🧠 Próximas mejoras
+
+- Tests unitarios con JUnit y Mockito
+- Autenticación y autorización (Spring Security)
+- Paginación y ordenamiento de resultados
 
 ---
 
@@ -143,15 +189,6 @@ Todos los endpoints fueron probados utilizando Postman. Se recomienda importar l
 - 💼 GitHub: [@AnderssonEspinoza](https://github.com/AnderssonEspinoza)
 - 💼 LinkedIn: [Andersson Espinoza M.](https://www.linkedin.com/in/tu-perfil)
 - 📧 Email: anderssonjunior.29@gmail.com
-
----
-
-## 🧠 Próximas mejoras
-
-- Validaciones (`@NotNull`, `@Email`)
-- Manejo de errores (`@ExceptionHandler`)
-- Documentación con Swagger / OpenAPI
-- Tests unitarios con JUnit
 
 ---
 

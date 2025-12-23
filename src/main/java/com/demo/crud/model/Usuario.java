@@ -2,6 +2,8 @@ package com.demo.crud.model;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "usuarios")
@@ -10,7 +12,14 @@ public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
+    @NotBlank(message = "El nombre es obligatorio")
     private String nombre;
+
+
+    @NotBlank(message = "El email es obligatorio")
+    @Email(message = "El email debe ser válido")
     private String email;
 
     public Usuario() {
